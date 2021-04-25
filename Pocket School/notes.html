@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link rel="stylesheet" href="intro.css">
+		<script type="module" src="script.js"></script>
+
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
+		<title>Notes</title>
+
+		<script type="text/javascript">
+			function saveTextAsFile() {
+				var textToSave = document.getElementById("inputTextToSave").value;
+				var textToSaveAsBlob = new Blob([textToSave], { type: "text/plain" });
+				var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+
+				var downloadLink = document.createElement("a");
+				downloadLink.download = "Notes.txt";
+				downloadLink.innerHTML = "Download File";
+				downloadLink.href = textToSaveAsURL;
+				downloadLink.onclick = destroyClickedElement;
+				downloadLink.style.display = "none";
+				document.body.appendChild(downloadLink);
+
+				downloadLink.click();
+			}
+
+			function destroyClickedElement(event) {
+				document.body.removeChild(event.target);
+			}
+
+			function loadFileAsText() {
+				var fileToLoad = document.getElementById("fileToLoad").files[0];
+				var fileReader = new FileReader();
+				//making a new function in a variable, etc.
+				fileReader.onload = function (fileLoadedEvent) {
+					var textFromFileLoaded = fileLoadedEvent.target.result;
+					document.getElementById("inputTextToSave").value = textFromFileLoaded;
+				};
+				fileReader.readAsText(fileToLoad, "UTF-8");
+			}
+		</script>
+
+	</head>
+
+	<body>
+		
+		<div class="topnav" style="font-size:25px;" id="buttondiv">
+			<a class="active" href="home.html" style="margin-right:50px;margin-left:50px;">Home</a>
+			<a class="active" href="todolist.html" style="margin-right:50px;margin-left:50px;">To-Do List</a>
+			<a class="active" href="classschedule.html" style="margin-right:50px;margin-left:50px;">Class Schedule</a>
+			<a class="active" href="homeworkdue.html" style="margin-right:50px;margin-left:50px;">Homework Due</a>
+			<a class="active" href="notes.html" style="margin-right:50px;margin-left:50px;">Notes</a>
+			<a class="active" href="resources.html" style="margin-right:50px;margin-left:50px;">Resources</a>
+		</div>
+		
+		<h1>Notes</h1>
+
+		
+		<textarea name='notes' id="inputTextToSave"></textarea>
+		<br>
+
+		<input type="file" id="fileToLoad">
+        <button onclick="loadFileAsText()" id='submitbutton'>Load File</button>
+			
+		<br>
+        <button onclick="saveTextAsFile()" src="notes.html">Save Text to File</button>
+			
+		<!--<input type='submit' id='submitbutton' value='Save'>
+		<input type='hidden' name='redirecturl' value='notes.html'>
+		<input type='hidden' name='survey' value='Accounts'>-->
+		
+	</body>
+
+</html>

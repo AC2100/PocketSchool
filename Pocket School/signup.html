@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="intro.css">
+		<script type="module" src="script.js"></script>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+		<title>Sign Up</title>
+	</head>
+	<body>
+		
+		<h1>Sign Up</h1>
+		
+		<form action='/survey/checkout' method='post' enctype="multipart/form-data">
+		
+			<div>
+				
+				<label>Name: </label> <input name='name'>
+				<br>
+				<label>Username: </label> <input name='user'>
+				<br>
+				<label>Email: </label> <input name='email'>
+				<br>
+				<label>Password: </label> <input type='password' name='password'>
+				<br>
+				<label>Grade: </label> <input name='grade'>
+				<br>
+				
+				<input type='submit' id='submitbutton' onclick="saveTextAsFile()" value='Sign Up'>
+				<input type='hidden' name='redirecturl' value='home.html'>
+				<input type='hidden' name='survey' value='Accounts'>
+			
+			</div>
+		
+		</form>
+		
+	</body>
+</html>

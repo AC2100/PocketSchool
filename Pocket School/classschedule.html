@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<link rel="stylesheet" href="intro.css">
+		<script type="module" src="script.js"></script>
+
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+
+		<title>Class Schedule</title>
+
+		<script type="text/javascript">
+			
+			function saveTextAsFile() {
+				var textToSave = "     1 "+document.getElementById("inputTextToSave1").value + "     2 " + document.getElementById("inputTextToSave2").value + "     3 "+document.getElementById("inputTextToSave3").value +"     4 "+document.getElementById("inputTextToSave4").value +"     5 "+ document.getElementById("inputTextToSave5").value +" 6 "+document.getElementById("inputTextToSave6").value +"     7"+document.getElementById("inputTextToSave7").value +"     8 "+document.getElementById("inputTextToSave8").value;
+				var textToSaveAsBlob = new Blob([textToSave], { type: "text/plain" });
+				var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+
+				var downloadLink = document.createElement("a");
+				downloadLink.download = "ToDoList.txt";
+				downloadLink.innerHTML = "Download File";
+				downloadLink.href = textToSaveAsURL;
+				downloadLink.onclick = destroyClickedElement;
+				downloadLink.style.display = "none";
+				document.body.appendChild(downloadLink);
+
+				downloadLink.click();
+			}
+
+			function destroyClickedElement(event) {
+				document.body.removeChild(event.target);
+			}
+
+			function loadFileAsText() {
+				var fileToLoad = document.getElementById("fileToLoad").files[0];
+				var fileReader = new FileReader();
+				//making a new function in a variable, etc.
+				fileReader.onload = function (fileLoadedEvent) {
+					var textFromFileLoaded = fileLoadedEvent.target.result;
+					document.getElementById("inputTextToSave").value = textFromFileLoaded;
+				};
+				fileReader.readAsText(fileToLoad, "UTF-8");
+			}
+		</script>
+
+	</head>
+
+	<body>
+		
+		<div class="topnav" style="font-size:25px;" id="buttondiv">
+			<a class="active" href="home.html" style="margin-right:50px;margin-left:50px;">Home</a>
+			<a class="active" href="todolist.html" style="margin-right:50px;margin-left:50px;">To-Do List</a>
+			<a class="active" href="classschedule.html" style="margin-right:50px;margin-left:50px;">Class Schedule</a>
+			<a class="active" href="homeworkdue.html" style="margin-right:50px;margin-left:50px;">Homework Due</a>
+			<a class="active" href="notes.html" style="margin-right:50px;margin-left:50px;">Notes</a>
+			<a class="active" href="resources.html" style="margin-right:50px;margin-left:50px;">Resources</a>
+		</div>
+		
+		<h1>Class Schedule</h1>
+
+		
+		<textarea name='todo' id="inputTextToSave1" style='width:800px;height:200px;'></textarea>
+		<br>
+		<textarea name='todo' id="inputTextToSave2" style='width:800px;height:200px;'></textarea>
+		<br>
+		<textarea name='todo' id="inputTextToSave3" style='width:800px;height:200px;'></textarea>
+		<br>
+		<textarea name='todo' id="inputTextToSave4" style='width:800px;height:200px;'></textarea>
+		<br>
+		<textarea name='todo' id="inputTextToSave5" style='width:800px;height:200px;'></textarea>
+		<br>
+		<textarea name='todo' id="inputTextToSave6" style='width:800px;height:200px;'></textarea>
+		<br>
+		<textarea name='todo' id="inputTextToSave7" style='width:800px;height:200px;'></textarea>
+		<br>
+		<textarea name='todo' id="inputTextToSave8" style='width:800px;height:200px;'></textarea>
+		<br>
+		
+		<input type="file" id="fileToLoad">
+        <button onclick="loadFileAsText()" id='submitbutton'>Load File</button>
+			
+		<br>
+        <button onclick="saveTextAsFile()" src="todolist.html" style="border:none; padding:5px; border-radius:5px;">Save Text to File</button>
+			
+		<!--<input type='submit' id='submitbutton' value='Save'>
+		<input type='hidden' name='redirecturl' value='notes.html'>
+		<input type='hidden' name='survey' value='Accounts'>-->
+		
+	</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="styles.css">
+		<script type="module" src="script.js"></script>
+		
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+		
+		<title>Login</title>
+		
+		<script type='module'>
+			
+			async function checkAccounts() {
+				
+				const resp = await fetch('/sample.csv')
+					, data = await resp.text()
+				;
+				
+				console.log(data)
+			}
+
+			checkAccounts();
+		</script>
+		
+	</head>
+	<body>
+		
+		<h1>Login</h1>
+		
+		<form action='/survey/checkout' method='post' enctype="multipart/form-data">
+		
+			<div>
+				<label>Name: </label> <input name='name'>
+				<br>
+				<label>Username: </label> <input name='user'>
+				<br>
+				<label>Password: </label> <input type='password' name='password'>
+				<br>
+				<label>Grade: </label> <input name='grade'>
+				<br>
+				
+				<input type='submit' id='submitbutton' value='Login'>
+				<input type='hidden' name='redirecturl' value='home.html'>
+				<input type='hidden' name='survey' value='Account'>
+			
+			</div>
+		
+		</form>
+		
+	</body>
+</html>
