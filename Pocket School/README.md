@@ -1,4 +1,4 @@
-# PocketSchool
+# Pocket School
 ==================
 ## Inspiration
 I really wanted to help students with organizing their school work. I've seen first hand (as a high school student) how difficult it can be for some students to keep track of their work, and that was why they were not achieving the grade they wanted. Pocket School hopes to help keep these students organized in a simplistic fashion.
